@@ -12,7 +12,7 @@ public class SnakeAndLadder {
 		System.out.println("Welcome to Snake and Ladder Simulation");
 		int playerPosition = 0;  //Single player at start position zero
 
-		while (playerPosition <= 100)
+		while (playerPosition < 100)
 		{
 			int die = (int) (Math.random()*6 + 1);  //Using random to get a number b/w 1 to 6
 			int playerCheck = (int)(Math.random()*3);
@@ -20,22 +20,33 @@ public class SnakeAndLadder {
 			case IS_LADDER:
 				System.out.println("player lands on a ladder");
 				playerPosition += die;
+				if (playerPosition == 100)
+				{
+					
+					System.out.println("Player won! Player final position is: " +playerPosition);
+				}
+				//if player position go above 100,Using this condition he gets back to previous position
+				else if (playerPosition > 100)          
+				{                                    
+					playerPosition -= die;
+				}
 				break;
 			case IS_SNAKE:
 				System.out.println("player lands on a snake ");
 				playerPosition -= die;
+				//if player position go below 100,player position set to 0
+				if (playerPosition < 0)             
+				{
+					playerPosition = 0;
+				}
 				break;
 			case NO_PLAY:
 				System.out.println("player remains on same position");
-				playerPosition = playerPosition;
 				break;
+
 			}
-			if (playerPosition < 0)
-			{
-				playerPosition = 0;
-			}
-			System.out.println(playerPosition);
+			System.out.println("player current position: "+playerPosition);
+
 		}
-		System.out.println("final position: " +playerPosition);
 	}
 }
