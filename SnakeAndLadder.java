@@ -11,9 +11,11 @@ public class SnakeAndLadder {
 
 		System.out.println("Welcome to Snake and Ladder Simulation");
 		int playerPosition = 0;  //Single player at start position zero
+		int winCount=0;
 
 		while (playerPosition < 100)
 		{
+			winCount++;
 			int die = (int) (Math.random()*6 + 1);  //Using random to get a number b/w 1 to 6
 			int playerCheck = (int)(Math.random()*3);
 			switch (playerCheck) {
@@ -45,8 +47,9 @@ public class SnakeAndLadder {
 				break;
 
 			}
-			System.out.println("player current position: "+playerPosition);
+			System.out.println("player position after die role: "+playerPosition);
 
 		}
+		System.out.println("Number of times the dice was played to win: "+winCount);
 	}
 }
